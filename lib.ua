@@ -8,9 +8,9 @@
   New ← WithProps ⊙(map{}[])
 └─╴
 
-Subscripts ← comptime(map "123456" "₁₂₃₄₅₆")
-Stylize    ← ⍜⊏(≡(get: Subscripts))⊸(⊚∈+@1⇡6)
-Elements! ←^ (
+Subscripts ↚ comptime(map "123456" "₁₂₃₄₅₆")
+Stylize    ↚ ⍜⊏(≡(get: Subscripts))⊸(⊚∈+@1⇡6)
+Elements! ↚^ (
   ≡⍚(
     ,,⊸(⍜⊢¯Stylize)
     $$ _ ← Element "_"
