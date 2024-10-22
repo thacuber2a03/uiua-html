@@ -29,15 +29,6 @@ Elements!(h1|h2|h3|h4|h5|h6)
 # document ? head body
 BasicDoc ← Html {⊓($Head|$Body) Head ⊙Body}
 
-BasicDoc {
-  Title "Hello world!"
-} {
-  H₁ "HEADER!!!!!"
-  H₂ "Header!"
-  H₃ "header..."
-  P "Hi there!"
-}
-
 # TODO: rendering
 
 # demo syntax
