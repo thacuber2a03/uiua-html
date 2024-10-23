@@ -27,7 +27,7 @@ Elements!(h1|h2|h3|h4|h5|h6)
 
 # Returns a new basic document out of its arguments.
 # document ? head body
-BasicDoc ← Html {⊓($Head|$Body) Head ⊙Body}
+BasicDoc ← Html [⊓($Head|$Body) Head ⊙Body]
 
 # TODO: rendering
 
