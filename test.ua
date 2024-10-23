@@ -1,4 +1,7 @@
-~ "lib" ~ BasicDoc H₁ H₂ H₃ P Title
+~ "lib"
+  ~ BasicDoc Html
+  ~ Body H₁ H₂ H₃ P
+  ~ Head Title
 
 BasicDoc {
   Title "Hello world!"
@@ -9,4 +12,14 @@ BasicDoc {
   P "Hi there!"
 }
 
-&p
+⍤⤙≍ Html {
+  Head {
+    Title "Hello world!"
+  }
+  Body {
+    H₁ "HEADER!!!!!"
+    H₂ "Header!"
+    H₃ "header..."
+    P "Hi there!"
+  }
+}
