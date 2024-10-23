@@ -2,7 +2,7 @@
   # Wraps the arguments into a new element with properties attached.
   # element ? tag properties content
   WithProps ← $Element {⊓($Tag|$Properties|$Content)}
-  
+
   # Wraps the arguments into a new element.
   # element ? tag content
   New ← WithProps ⊙(map{}[])
@@ -34,14 +34,14 @@ BasicDoc ← Html {⊓($Head|$Body) Head ⊙Body}
 # demo syntax
 
 # BasicDoc (
-#   {Title!"Hello world!"
+#   [Title!"Hello world!"
 #    CSS $ ::root {
 #        $   /* inline css!!! */
 #        $ }
 #    Link‼"text/javascript" "js/the/js.js"
-#   }
+#   ]
 
-#   {H₁!"HEADER!!!!!"
+#   [H₁!"HEADER!!!!!"
 #    H₂!"Header!"
 #    H₃!"header..."
 
@@ -50,22 +50,22 @@ BasicDoc ← Html {⊓($Head|$Body) Head ⊙Body}
 #      $ more
 #      $ text
 
-#    UList!{
+#    UList![
 #       P!"ayo lists"
-#       List!{
+#       List![
 #         P!"lists within lists"
 #         "this one's ordered tho"
-#       }
+#       ]
 
 #       # I don't like that this has
 #       # to have two exclamation points
 #       # for the macro idea to work
 #       Anchor‼"so crazy" "https://uiua.org/"
-#     }
+#     ]
 
 #    P‼("paragraph with properties"
 #       [{"class" "the"}
 #        {"id" "paragraph"}]
 #     )
-#   }
+#   ]
 # )

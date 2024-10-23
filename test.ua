@@ -3,23 +3,23 @@
   ~ Body H₁ H₂ H₃ P
   ~ Head Title
 
-BasicDoc {
+BasicDoc [
   Title "Hello world!"
-} {
+] [
   H₁ "HEADER!!!!!"
   H₂ "Header!"
   H₃ "header..."
   P "Hi there!"
-}
+]
 
-⍤⤙≍ Html {
-  Head {
+⍤⤙≍ Html [
+  Head [
     Title "Hello world!"
-  }
-  Body {
+  ]
+  Body [
     H₁ "HEADER!!!!!"
     H₂ "Header!"
     H₃ "header..."
     P "Hi there!"
-  }
-}
+  ]
+]
