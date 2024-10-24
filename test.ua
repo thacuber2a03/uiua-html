@@ -10,7 +10,7 @@
 ⍣(0 ◌Element~WithProps "html" 0 "ae"|1)
 ⍤"Expected `Element~WithProps tag <invalid type>` to fail, but it passed"
 
-⊙◌?Element~Check P "Hello world"
+⊙◌Element~Check P "Hello world"
 ⍤"Element~Check failed with a valid tag"
 
 BasicDoc [
