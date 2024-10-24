@@ -67,8 +67,8 @@ BasicDoc ← Html [⊓($Head Head|$Body Body)]
     ∘
   )
   
-  # Renders the [value] into HTML.
-  # Unlike all safe [Element] calls, this function/module
+  # Renders the `value` into HTML.
+  # Unlike all safe `Element` calls, this function/module
   # accepts any value with no issues. Useful for debugging.
   # rendered ? value
   Call ← |1 (
@@ -83,7 +83,7 @@ BasicDoc ← Html [⊓($Head Head|$Body Body)]
           | NULL)
         | /⊂≡(Call °□)
         | repr)
-        ⍤"TODO: render properties" =NULL.
+        ⍤"TODO: render properties" ≍NULL.
       | repr
       )
     )
