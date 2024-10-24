@@ -1,6 +1,6 @@
 ~ "lib"
   ~ BasicDoc Html
-  ~ Body H₁ H₂ H₃ P
+  ~ Body P
   ~ Element
   ~ Head Title
 

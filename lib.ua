@@ -90,7 +90,7 @@ BasicDoc ← Html [⊓($Head Head|$Body Body)]
   )
 └─╴
 
-# demo syntax (not real)
+# demo syntax (not real) (not final either)
 
 # BasicDoc (
 #   [Title!"Hello world!"
