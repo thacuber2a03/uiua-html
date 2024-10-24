@@ -6,6 +6,7 @@ Currently *usable*, but not done.
 
 ### Short term goals
 
+- [ ] Render element properties
 - [ ] Lists (ordered and unordered)
 - [ ] `<pre>` blocks
 
