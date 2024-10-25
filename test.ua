@@ -85,13 +85,13 @@ BasicDoc‼"Hello world!" [P "Hi there!"]
 #   Raw~Body 2
 # ]
 
-Document!!"Hello world!" [P "Hi there!"]
+Document‼"Hello world!" [P "Hi there!"]
 ⍤⤙≍ Raw~Html [
   Raw~Head "Hello world!"
   Raw~Body [P "Hi there!"]
 ]
 
-Document!![Title "Hello world!"] [P "Hi there!"]
+Document‼[Title "Hello world!"] [P "Hi there!"]
 ⍤⤙≍ Raw~Html [
   Raw~Head "Hello world!"
   Raw~Body [P "Hi there!"]

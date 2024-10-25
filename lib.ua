@@ -36,17 +36,14 @@ IsMap ↚ ⍣(1⋅◌°map|0)
   └─╴
 
   # Checks if the value is a valid element.
-  # Returns whether it is, alongside the `reason` why not.
-  # If it is an element, you're free to get rid of `reason`.
-  # NOTE: It doesn't actually give an useful reason yet.
-  # isElement reason ? value
-  Check ← (
-    ⍣(1 "hooray" ⋅⋅◌°Unsafe~WithAttrs
-    | 1 "hooray" ⋅⋅◌°Unsafe~New
-    | 1 "hooray" ⋅◌°Unsafe~NoEndTag
-    | 0 "TODO: actually give the reason why"
-    )
-  )
+  # - `0` - invalid element
+  # - `1` - element with end tag
+  # - `2` - element without end tag
+  # elementType ? value
+  Check ← ⍣(
+    1 ⋅⋅◌°Unsafe~WithAttrs
+  | 2 ⋅◌°Unsafe~NoEndTag
+  | 0)
 
   # Wraps the arguments into a new element with attributes attached.
   # Throws an error if `tag` isn't a string or `attributes` isn't a map.
