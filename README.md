@@ -2,7 +2,7 @@
 
 A [Uiua](https://uiua.org) library for creating and manipulating HTML elements.
 
-Currently usable, but not done.
+Currently in an alpha state; anything may change at any time.
 
 > [!WARNING]
 > `uiua-html` is experimental until `case` gets stabilized. Please excuse any inconveniencies.
