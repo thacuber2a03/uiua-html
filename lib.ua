@@ -1,3 +1,7 @@
+# Experimental!
+# NOTICE: uiua-html is experimental until `case` gets stabilized.
+# Please excuse any inconveniencies this might cause.
+
 # I've a feeling I'll use this more often than I think
 IsMap ↚ ⍣(1⋅◌°map|0)
 
@@ -18,6 +22,7 @@ IsMap ↚ ⍣(1⋅◌°map|0)
   # Checks if the value is a valid element.
   # Returns whether it is, alongside the `reason` why not.
   # If it is an element, you're free to get rid of `reason`.
+  # NOTE: It doesn't actually give an useful reason yet.
   # isElement reason ? value
   Check ← ⍣(
     1 "hooray" ⋅⋅◌°WithPropsUnsafe
@@ -36,8 +41,9 @@ IsMap ↚ ⍣(1⋅◌°map|0)
   New ← WithProps ⊙(map{}[])
 └─╴
 
-Subscripts ↚ comptime(map "123456" "₁₂₃₄₅₆")
-Stylize    ↚ ⍜⊏(≡(get: Subscripts))⊸(⊚∈+@1⇡6)
+# thanks to kai himself for this snippet
+Replace   ↚ +⬚0⊏⊸⊃(⊗:⊙⋅∘)-
+Stylize   ↚ Replace "123456" "₁₂₃₄₅₆"
 Elements! ↚^ (
   ≡⍚(
     ,,⊸(⍜⊢¯Stylize)
@@ -50,6 +56,7 @@ Elements! ↚^ (
 Elements!(html|head|body|title)
 Elements!(p|a|ul|ol|il)
 Elements!(h1|h2|h3|h4|h5|h6)
+Elements!(script|style)
 
 # TODO: make this a macro
 
@@ -61,10 +68,21 @@ BasicDoc ← Html [⊓($Head Head|$Body Body)]
 # The main rendering module. You're free to call this as a function,
 # as its `Call` function is the main rendering function.
 ┌─╴Render
+  # The map of characters that get replaced when you call `Escape`.
+  EscapeMap ← comptime(map"&<>'\""{"&amp;" "&lt;" "&gt;" "&#39;" "&quot;"})
+  
   # Escapes `value` so it renders safely. Currently does nothing.
   # escaped ? value
-  Escape ← (
-    ∘
+  Escape ← /(⊂∩°□)≡(⍣(get:EscapeMap))
+  
+  # Renders a map into a single string of HTML element properties.
+  # Throws an error if any of the keys isn't a string.
+  # string ? properties
+  Properties ← (
+    °map≡□
+    ⟜⍚(⍤⊃($"all the keys in Properties must be strings, found a _"repr|=1type))
+    ≡(□$"_=\"_\"" ⊙(Escape$"_")°⊟)⍉⊟
+    /$"_ _"
   )
   
   # Renders the `value` into HTML.
@@ -72,21 +90,17 @@ BasicDoc ← Html [⊓($Head Head|$Body Body)]
   # accepts any value with no issues. Useful for debugging.
   # rendered ? value
   Call ← |1 (
-    ≠0⧻△.
-    ⨬(repr
-    | type.
+    =0⧻△.
+    ⨬(type.
       ⨬(repr
       | Escape
-      | ⍣(°Element~WithPropsUnsafe
-          ⧻.:
+      | ⍣(≠0⧻.: °Element~WithPropsUnsafe
           ⨬($"<_>_</_>" ⟜(Call:)◌
-          | NULL)
+          | $"<_ _>_</_>" :⊙⟜(Call:) caseProperties)
         | /⊂≡(Call °□)
         | repr)
-        ⍤"TODO: render properties" ≍NULL.
-      | repr
-      )
-    )
+      | repr)
+    | repr)
   )
 └─╴
 

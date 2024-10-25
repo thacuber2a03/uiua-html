@@ -4,11 +4,14 @@ A [Uiua](https://uiua.org) library for creating and manipulating HTML elements.
 
 Currently *usable*, but not done.
 
+> [!WARNING]
+> `uiua-html` is experimental until `case` gets stabilized. Please excuse any inconveniencies.
+
 ### Short term goals
 
-- [ ] Render element properties
-- [ ] Lists (ordered and unordered)
-- [ ] `<pre>` blocks
+- [x] Render element properties
+- [ ] List abstractions (ordered and unordered)
+- [ ] Code blocks
 
 ### Long-term goals
 
