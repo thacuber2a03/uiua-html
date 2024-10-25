@@ -4,9 +4,9 @@
   ~ BasicDoc‼
   ~ Break ExBreak
   ~ Element Raw Render
-  ~ ExLink‼! Link‼
+  ~ ExLink Link
   ~ ExP H₁ P
-  ~ List! Quote! UList!
+  ~ List Quote UList
   ~ Script Style
 
 # ---------------
@@ -32,13 +32,18 @@
 # element rendering
 # -----------------
 
-$ Hello world!
-$ Some sample text :)
+Text ← $ Hello world! Some sample text :)
 
-⍤⤙≍ ⊃($"<p>_</p>"|Render P).
-⍤⤙≍ ⊃($"<p class=\"hello\" id=\"world\">_</p>"|Render ExP map{"class" "id"}{"hello" "world"}).
+⍤⤙≍ ⊃($"<p>_</p>"|Render P) Text
 
-⍣(0◌Render ExP map{"class" 1}{"hello" "world"}|1)
+Text
+⍤⤙≍ ⊃(
+  $"<p class=\"hello\" id=\"world\">_</p>"
+| Render ExP ⊙(map{"class" "id"}{"hello" "world"})
+)
+
+Text
+⍣(0◌Render ExP ⊙(map{"class" 1}{"hello" "world"})|1)
 $ Expected `Render ExP map{"class" 1}{"hello" "world"} to fail due to `Render~Attributes` failing, but both passed
 ⍤
 
@@ -46,8 +51,10 @@ $ Expected `Render ExP map{"class" 1}{"hello" "world"} to fail due to `Render~At
 # no end tag rendering
 # --------------------
 
-⍤⤙≍ ⊃$"<br />"Render Break
-⍤⤙≍ ⊃$"<br class=\"hello\" id=\"world\"/>"Render ExBreak map{"class" "id"}["hello" "world"]
+⍤⤙≍ "<br/>" Render Break
+
+Render ExBreak map{"class" "id"}["hello" "world"]
+⍤⤙≍ "<br class=\"hello\" id=\"world\"/>"
 
 # --------------------
 # attributes rendering
@@ -68,32 +75,46 @@ $ Expected `Render ExP map{"class" 1}{"hello" "world"} to fail due to `Render~At
 
 BasicDoc‼"Hello world!" [P "Hi there!"]
 ⍤⤙≍ Raw~Html [
-  Raw~Head [Raw~Title "Hello world!"]
+  Raw~Head [Title "Hello world!"]
   Raw~Body [P "Hi there!"]
 ]
 
-BasicDoc‼1 2
+# BasicDoc‼1 2
+# ⍤⤙≍ Raw~Html [
+#   Raw~Head [Title 1]
+#   Raw~Body 2
+# ]
+
+Document!!"Hello world!" [P "Hi there!"]
 ⍤⤙≍ Raw~Html [
-  Raw~Head [Raw~Title 1]
-  Raw~Body 2
+  Raw~Head "Hello world!"
+  Raw~Body [P "Hi there!"]
 ]
 
-List!["a" "b" "c"]
+Document!![Title "Hello world!"] [P "Hi there!"]
+⍤⤙≍ Raw~Html [
+  Raw~Head "Hello world!"
+  Raw~Body [P "Hi there!"]
+]
+
+List["a" "b" "c"]
 ⍤⤙≍ Raw~Ol[Raw~Li "a" Raw~Li "b" Raw~Li "c"]
 
-UList!["a" "b" "c"]
+UList["a" "b" "c"]
 ⍤⤙≍ Raw~Ul[Raw~Li "a" Raw~Li "b" Raw~Li "c"]
 
-⍤⤙≍ ⊃(Raw~Q|Quote!) "Abandon nominativity. Embrace relativity."
+"Abandon nominativity. Embrace relativity."
+⍤⤙≍ ⊃($Quote Raw~ExQ ⊙(map{}{})|Quote)
 
 $ IwbnfouevcmsiehwvudbqvGovernment.
 $ -- Winston Churchill
-⍤⤙≍ ⊃(Raw~Blockquote|Quote!)
+⍤⤙≍ ⊃($Quote Raw~ExBlockquote ⊙(map{}{})|Quote)
 
 LinkText ← "this is a link"
-Link     ← "https://uiua.org"
+UiuaPage ← "https://uiua.org"
 
-⍤⤙≍ (Raw~ExA map{"href"}{Link} LinkText) Link‼LinkText Link
-⍤⤙≍ (Raw~ExA map{"id" "href"}{"a" Link} LinkText) ExLink‼!LinkText Link (map{"id"}{"a"})
+Link LinkText UiuaPage
+⍤⤙≍ (Raw~ExA LinkText map{"href"}{UiuaPage})
 
-⍤⤙≍ (Raw~H₁ "the") H₁ "the"
+ExLink LinkText UiuaPage (map{"id"}{"a"})
+⍤⤙≍ (Raw~ExA LinkText map{"id" "href"}{"a" UiuaPage})
