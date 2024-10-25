@@ -2,7 +2,7 @@
 
 A [Uiua](https://uiua.org) library for creating and manipulating HTML elements.
 
-Currently *usable*, but not done.
+Currently usable, but not done.
 
 > [!WARNING]
 > `uiua-html` is experimental until `case` gets stabilized. Please excuse any inconveniencies.
@@ -10,6 +10,7 @@ Currently *usable*, but not done.
 ### Short term goals
 
 - [x] Render element properties
+- [ ] Allow for elements with no end tag
 - [ ] List abstractions (ordered and unordered)
 - [ ] Code blocks
 
