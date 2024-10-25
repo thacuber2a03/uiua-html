@@ -10,8 +10,10 @@ Currently usable, but not done.
 ### Short term goals
 
 - [x] Render element properties
-- [ ] Allow for elements with no end tag
-- [ ] List abstractions (ordered and unordered)
+- [x] Allow for elements with no end tag
+- [x] List abstractions (ordered and unordered)
+- [x] Quote abstractions
+- [x] Link abstractions
 - [ ] Code blocks
 
 ### Long-term goals
