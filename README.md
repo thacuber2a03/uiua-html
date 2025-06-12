@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This library is no longer in active development. Please use https://github.com/uiua-lang/webua instead.
+
 # uiua-html
 
 A [Uiua](https://uiua.org) library for creating and manipulating HTML elements.
